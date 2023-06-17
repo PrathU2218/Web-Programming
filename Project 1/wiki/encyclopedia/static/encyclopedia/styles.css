@@ -1,0 +1,77 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    height: 50vh;
+    width: 80%;
+}
+
+.edit {
+    background-color: aqua;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    line-height: 50px;
+}
+
+.edit:hover {
+    text-decoration: none;
+    color: rgb(172, 30, 172);
+    font-weight: bold;
+}
+
+.main {
+    padding-left: 10px;
+    margin: 0px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+    margin-left: 20px;
+}
+
+.topbar {
+    background-color: gainsboro;
+    margin: 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h2 {
+    margin: 5px;
+    font-size: 45px;
+}
+
+.navitem-right, .navitem-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navitem-right div {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+}
