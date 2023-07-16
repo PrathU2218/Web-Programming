@@ -1,0 +1,406 @@
+/* ------ Main Containers styles ------ */
+html,body { height:100%; }
+
+div.container {
+    background: rgba(255, 255, 255, 0.27);
+    box-shadow: 0px 0px 24px 26px rgba(255, 255, 255, 0.27);
+    height: 90%;
+}
+
+#emails-view {
+    max-height: 700px;
+    overflow: auto;
+    padding-right: 10px;
+}
+
+#details-view div.email-body {
+    max-height: 550px;
+    overflow: auto;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Backgroud styles ------ */
+/* Abstract styles */
+.abstract-1 {
+    background-image: url("./img/abstract-bg1.jpg");
+    background-position: center center;
+    animation: bg-abstract-img 50s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 50s ease-out 0s infinite alternate;
+    animation-play-state: paused;
+}
+
+.abstract-2 {
+    background-image: url("./img/abstract-bg2.jpg");
+    animation: bg-abstract-img 15s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 15s ease-out 0s infinite alternate;
+    animation-play-state: paused;
+}
+
+.abstract-3 {
+    background-image: url("./img/abstract-bg3.jpg");
+    animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    animation-play-state: paused;
+}
+
+.abstract-4 {
+    background-image: url("./img/abstract-bg4.jpg");
+    animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    animation-play-state: paused;
+}
+
+/* Gradient style */
+.gradient {
+    background: linear-gradient(0deg, rgba(169,34,195,1) 0%, rgba(66,151,195,1) 23%, rgba(34,193,195,1) 50%, rgba(61,119,194,1) 78%, rgba(169,34,192,1) 100%);
+    background-size: 2000px 4000px;
+    -webkit-animation: bg-gradient-img 15s infinite alternate both;
+    animation: bg-gradient-img 15s infinite alternate both;
+    animation-play-state: paused;
+}
+
+/* Abstract animation */
+@-webkit-keyframes bg-abstract-img {
+    0% {background-position: 0% 0%;}
+    100% {background-position: 0% 20%;}
+}
+
+@keyframes bg-abstract-img {
+    0% {background-position: 0% 0%;}
+    100% {background-position: 0% 20%;}
+}
+
+/* Gradient animation */
+@-webkit-keyframes bg-gradient-img {
+    0% {background-position: 5% 0%;}
+    100% {background-position: 50% 75%;}
+}
+@keyframes bg-gradient-img {
+    0% {background-position: 50% 0%;}
+    100% {background-position: 50% 75%;}
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* ------ Main Buttons styles ------ */
+/* Default button style */
+.btn-outline-primary {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.abstract-1 .btn-outline-primary, .gradient .btn-outline-primary{
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 460;
+    color: #0062ca;
+}
+
+.abstract-1 .btn-outline-primary:hover, .gradient .btn-outline-primary:hover {
+    color: #ffffff;
+    background-color: #007bff;
+}
+
+#backgroud-button {
+    position: relative;
+    top: -58px;
+    float: right;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* ------ Email block styles ------ */
+.email-block {
+    padding: 0px 30px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgb(100, 99, 99);
+    max-width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns:  minmax(60px, auto) minmax(60px, auto) minmax(25px, auto) 1fr 1fr 1fr 1fr 1fr 1fr minmax(60px, auto) minmax(60px, auto) minmax(25px, auto);
+    grid-auto-rows: minmax(70px, auto);
+    align-items: center;
+    gap: 7px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 4px -2px 10px -5px rgba(53, 52, 52, 0.75); 
+    transition: background 0.15s;
+    animation: hide 1s forwards paused ease-out;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+        grid-auto-rows: minmax(70px, auto);
+    }
+
+    70% {
+        opacity: 0;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+        grid-auto-rows: minmax(70px, auto);
+    }
+
+    100% {
+        opacity: 0;
+        height: 0px;
+        line-height: 0px;
+        margin-bottom: 0px;
+        grid-auto-rows: 0px;
+    }
+}
+
+.email-block:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgb(53, 52, 52);
+    cursor: pointer;
+}
+
+/* Unread email */
+.email-block.unread {
+    background: rgba(228, 180, 125, 0.7);
+}
+
+.email-block.unread:hover {  
+    background: rgba(241, 193, 138, 0.85);
+}
+
+/* Every email-block part */
+.email-block .block-users {
+    grid-column: 1/3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 480;
+}
+
+.email-block .users-count {
+    grid-column: 3/4;
+    font-size: 14px;
+    color: rgb(92, 92, 92);
+}
+
+.email-block .block-subject {
+    grid-column: 4/10;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 370;
+    font-style: italic;
+}
+
+.email-block .block-timestamp {
+    grid-column: 10/12;
+    font-size: 12px;
+    color: rgb(92, 92, 92);
+}
+
+.email-block .archive-icon, .email-block .unarchive-icon {
+    grid-column: 12/13;
+    text-align: right;
+}
+
+.archive-icon img, .unarchive-icon img {
+    width: 20px;
+    transition: box-shadow 0.25s ;
+}
+
+.archive-icon img:hover, .unarchive-icon img:hover {
+    border-radius: 35%;
+    box-shadow: 0px 0px 13px 0.1px rgba(146, 144, 144, 0.79), 0 0 20px 1.5px inset rgba(146, 144, 144, 0.5);
+    cursor: pointer;
+}
+
+.archive-icon.hidden {
+    visibility: hidden;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Compose email styles ------ */
+#compose-form input[type="submit"] {
+    margin: 20px 0px 10px 0px;
+    float: right;
+}
+
+textarea {
+    min-height: 350px;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+/* ------ Details view styles ------ */
+#reply {
+    margin-top: 10px;
+}
+
+#reply img {
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+
+/* Make text transition as fast as icon color transition */
+#reply:hover {
+    transition: color 0s 0s;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Scrollbar styles ------ */
+/* Common scrollbar styles */
+#emails-view::-webkit-scrollbar, .email-body::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+#emails-view::-webkit-scrollbar-track, .email-body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    border-radius: 35px 35px 35px 35px;
+}
+
+#emails-view::-webkit-scrollbar-thumb, .email-body::-webkit-scrollbar-thumb  {
+    border-radius: 35px 35px 35px 35px;
+}
+
+/* abstract 1 scrollbar */
+.abstract-1 #emails-view::-webkit-scrollbar-thumb, .abstract-1 .email-body::-webkit-scrollbar-thumb {
+    background-color: rgba(40, 113, 207, 0.329);
+    border: 1px solid rgb(40, 113, 207);
+}
+
+.abstract-1 #emails-view::-webkit-scrollbar-thumb:hover, .abstract-1 .email-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(40, 113, 207, 0.6);
+}
+
+/* abstract 2 scrollbar */
+.abstract-2 #emails-view::-webkit-scrollbar-thumb, .abstract-2 .email-body::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 77, 167, 0.329);
+    border: 1px solid rgb(212, 77, 167);
+}
+
+.abstract-2 #emails-view::-webkit-scrollbar-thumb:hover, .abstract-2 .email-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(212, 77, 167, 0.6);
+}
+
+/* abstract 3 scrollbar */
+.abstract-3 #emails-view::-webkit-scrollbar-thumb, .abstract-3 .email-body::-webkit-scrollbar-thumb {
+    background-color: rgba(40, 113, 207, 0.329);
+    border: 1px solid rgb(40, 113, 207);
+}
+
+.abstract-3 #emails-view::-webkit-scrollbar-thumb:hover, .abstract-3 .email-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(40, 113, 207, 0.6);
+}
+
+/* abstract 4 scrollbar */
+.abstract-4 #emails-view::-webkit-scrollbar-thumb, .abstract-4 .email-body::-webkit-scrollbar-thumb {
+    background-color: rgba(207, 129, 40, 0.329);
+    border: 1px solid rgb(163, 99, 26);
+}
+
+.abstract-4 #emails-view::-webkit-scrollbar-thumb:hover, .abstract-4 .email-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(207, 129, 40, 0.6);
+}
+
+/* gradient scrollbar */
+.gradient #emails-view::-webkit-scrollbar-thumb, .gradient .email-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(0deg, rgba(61,119,194, 0.329) 0%,  rgba(169,34,195, 0.329) 100%);
+    border: 1px solid rgb(40, 113, 207);
+}
+
+.gradient #emails-view::-webkit-scrollbar-thumb:hover, .gradient .email-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(0deg, rgba(61,119,194, 0.7) 0%,  rgba(169,34,195, 0.7) 100%);
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Other styles ------ */
+/* shoutout */
+.shoutout {
+    background-color: rgba(255, 255, 255, 0.151);
+    border-radius: 10px;
+    padding: 3px;
+    margin: 0px 0px 20px auto;
+    display: block;
+    width: 270px;
+    min-height: 25px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.shoutout a {
+    color: rgb(41, 56, 85);
+    font-weight: 500;
+}
+
+.shoutout a:hover {
+    color: rgb(31, 40, 58);
+}
+
+/* Headers font */
+h1, h2, h3 {
+    font-family: "Sora";
+}
+
+@font-face {
+    font-family: "Sora";
+    src: url("../mail/fonts/Sora-Regular.ttf")
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+
+/* Register here text */
+.register-login-here {
+    margin-top: 20px;
+}
+
+.register-login-here a {
+    color:rgb(41, 56, 85);
+    font-weight: 450;
+}
+
+.register-login-here a:hover {
+    color: rgb(31, 40, 58);
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ media queries ------ */
+@media screen and (max-width: 780px) {
+    .email-block {
+        padding: 20px;
+        grid-template-columns:  minmax(30px, auto) minmax(30px, auto) minmax(25px, auto) 1fr;
+        grid-auto-rows: minmax(15px, auto);
+        align-items: center;
+        gap: 7px;
+    }
+
+    /* Every email-block part */
+    .email-block .block-users {
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+
+    .email-block .users-count {
+        grid-column: 3/4;
+        grid-row: 1/2;
+    }
+
+    .email-block .block-subject {
+        grid-column: 1/4;
+        grid-row: 2/3;
+    }
+
+    .email-block .block-timestamp {
+        grid-column: 1/3;
+        grid-row: 3/4;
+    }
+
+    .email-block .archive-icon, .email-block .unarchive-icon {
+        grid-column: 4/5;
+        grid-row: 3/4;
+    }
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */

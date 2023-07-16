@@ -1,0 +1,11 @@
+textarea {
+    min-height: 200px;
+}
+
+.read {
+    background-color: #cbcbcb;
+  }
+
+.submit {
+    margin-top: 10px;
+}
