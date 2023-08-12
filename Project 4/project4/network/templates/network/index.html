@@ -1,0 +1,104 @@
+{% extends "network/layout.html" %} {% load static %} {% block body %}
+
+<h1 class="all-post">All Posts</h1>
+
+<div class="card">
+  <h3>Add New Post</h3>
+  <div class="card-body my-card">
+    <textarea class="form-control" id="add-text" rows="3"></textarea>
+    <div class="post-button">
+      <button type="submit" id="add-btn" class="btn btn-success">Post</button>
+    </div>
+  </div>
+</div>
+
+<div id="root"></div>
+
+{% for post in posts %}
+
+<div class="card post">
+  <div class="post-user-edit">
+    <a href="{% url 'profile' post.user.username%}" id="username"
+      >{{post.user.username}}</a
+    >
+    {% if request.user == post.user %} {% comment %}
+    <a href="#" id="edit-btn">Edit</a> {% endcomment %}
+    <span
+      class="text-primary edit"
+      data-id="{{post.id}}"
+      id="edit-btn-{{post.id}}"
+      >Edit</span
+    >
+    {% endif %}
+  </div>
+  <div id="post-content-{{post.id}}" class="content">{{post.content}}</div>
+  <div>{{post.timestamp}}</div>
+  <div>
+    <i
+    data-id="{{post.id}}"
+    id="post-like-{{post.id}} liked"
+    {% if request.user in post.likes.all %}
+      class="fas fa-heart liked"
+      data-is-liked="yes"
+      {% else %}
+      class="far fa-heart liked"
+      data-is-liked="no"
+      {% endif %}
+      style="color: red"
+    ></i>
+    <strong id="post-count-{{post.id}}">{{post.likes.count}}</strong>
+  </div>
+
+  <textarea
+    data-id="{{post.id}}"
+    id="post-edit-{{post.id}}"
+    style="display: none"
+    class="form-control textarea"
+    row="3"
+  >
+{{post.content}}</textarea>
+</div>
+
+{% endfor %}
+
+<div class="page-navigation">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+    {% if posts.has_previous %}
+    <li class="page-item">
+      <li class="page-item">
+        <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {%else%}
+        <li class="page-item">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {%endif%}
+{% if posts.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      {%else%}
+       <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      {%endif%}
+    </ul>
+  </nav>
+</div>
+
+{% endblock body %}
+{% block script %} <script src="{% static 'network/add_post.js'%}"></script> {% endblock script %}
